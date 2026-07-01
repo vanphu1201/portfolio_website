@@ -2,11 +2,13 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
+  padding: 120px 0px;
+  background-color: var(--backgroundColor);
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  padding: 80px 0;
+  box-sizing: border-box;
 }
 
 /* Video Background */
@@ -16,226 +18,356 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
+  z-index: 1;
+  overflow: hidden;
 }
 
 .techstack-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0.22;
 }
 
-/* Dark Overlay */
 .techstack-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  background: radial-gradient(
+    circle at center,
+    transparent 0%,
+    rgba(11, 8, 12, 0.3) 60%,
+    var(--backgroundColor) 95%
+  );
 }
 
-/* Top gradient fade - blends with Work section above */
-.techstack-video-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 150px;
-  background: linear-gradient(to bottom, #0b080c 0%, transparent 100%);
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* Bottom gradient fade - blends with Contact section below */
-.techstack-video-container::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 150px;
-  background: linear-gradient(to top, #0b080c 0%, transparent 100%);
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* Content */
+/* Content Layout */
 .techstack-content {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
+  max-width: var(--cMaxWidth);
+  text-align: center;
   padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .techstack-content h2 {
   font-size: 70px;
-  text-align: center;
-  font-weight: 400;
-  text-transform: uppercase;
-  margin-bottom: 50px;
-  background: linear-gradient(180deg, #ffffff 0%, #c2a4ff 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  font-weight: 500;
+  margin: 0 0 50px 0;
 }
 
-/* Pyramid Container */
+.techstack-content h2 > span {
+  color: var(--accentColor);
+}
+
+/* ── Interactive Pyramid ── */
 .techstack-pyramid {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
+  margin-bottom: 60px;
+  width: 100%;
 }
 
-/* Each Row */
 .techstack-row {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
+  width: 100%;
   flex-wrap: wrap;
 }
 
-/* Tech Item */
-.techstack-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 55px;
-  height: 68px;
-  padding: 8px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: all 0.3s ease;
+.techstack-item-node {
+  position: relative;
   text-decoration: none;
   cursor: pointer;
+  display: inline-block;
 }
 
-.techstack-item:hover {
-  transform: translateY(-6px) scale(1.08);
-  background: rgba(194, 164, 255, 0.1);
-  border-color: var(--accentColor);
-  box-shadow: 0 8px 30px rgba(194, 164, 255, 0.25);
+.node-icon-wrapper {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
 }
 
-.techstack-item img {
+.node-icon-wrapper img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: none;
+  transition: all 0.3s ease;
+}
+
+/* Hover node effect */
+.techstack-item-node:hover .node-icon-wrapper {
+  transform: scale(1.15) translateY(-3px);
+  border-color: rgba(194, 164, 255, 0.35);
+  background: rgba(194, 164, 255, 0.04);
+  box-shadow: 
+    0 0 15px rgba(194, 164, 255, 0.15),
+    inset 0 0 10px rgba(194, 164, 255, 0.05);
+}
+
+.techstack-item-node:hover .node-icon-wrapper img {
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.05);
+}
+
+.techstack-item-node.node-active .node-icon-wrapper {
+  border-color: rgba(194, 164, 255, 0.5);
+  background: rgba(194, 164, 255, 0.06);
+}
+
+/* Tooltip */
+.node-tooltip {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: rgba(18, 18, 30, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 10px;
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  font-weight: 500;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+
+.techstack-item-node:hover .node-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── Cybernetic HUD Scan Panel ── */
+.tech-hud-panel {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 120px;
+}
+
+.hud-card-wrapper {
+  background: rgba(18, 18, 30, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 20px;
+  padding: 24px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 110px;
+  box-sizing: border-box;
+}
+
+.hud-card-wrapper.hud-scanning {
+  border-color: rgba(194, 164, 255, 0.2);
+  background: rgba(18, 18, 30, 0.45);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.3),
+    0 0 25px rgba(194, 164, 255, 0.04);
+}
+
+.hud-content {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  text-align: left;
+  align-items: center;
+}
+
+.hud-left {
+  flex-shrink: 0;
+}
+
+.hud-icon-frame {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.02);
+}
+
+.hud-icon-frame img {
   width: 30px;
   height: 30px;
   object-fit: contain;
-  filter: grayscale(100%) contrast(1.2) brightness(1.5);
-  opacity: 0.85;
-  transition: filter 0.3s ease, opacity 0.3s ease;
 }
 
-.techstack-item:hover img {
-  filter: none;
-  opacity: 1;
+.hud-right {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.techstack-item span {
-  font-size: 9px;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 5px;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 50px;
+.hud-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.techstack-item:hover span {
+.hud-header h4 {
+  font-size: 18px;
+  font-weight: 700;
   color: #fff;
+  margin: 0;
+  letter-spacing: -0.2px;
 }
 
-/* Responsive */
-@media screen and (max-width: 1200px) {
-  .techstack-content {
-    max-width: 900px;
-  }
-  
-  .techstack-item {
-    width: 50px;
-    height: 62px;
-  }
-  
-  .techstack-item img {
-    width: 26px;
-    height: 26px;
-  }
-  
-  .techstack-item span {
-    font-size: 8px;
-  }
+/* HUD tags */
+.hud-label-tag {
+  font-size: 8px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-@media screen and (max-width: 900px) {
+.hud-label-tag.expert {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #10b981;
+}
+
+.hud-label-tag.advanced {
+  background: rgba(194, 164, 255, 0.08);
+  border: 1px solid rgba(194, 164, 255, 0.2);
+  color: #c2a4ff;
+}
+
+.hud-label-tag.intermediate {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.hud-meter-container {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.hud-meter-bar {
+  height: 100%;
+  background: linear-gradient(to right, #7f40ff, #c2a4ff);
+  border-radius: 10px;
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 6px rgba(194, 164, 255, 0.5);
+}
+
+.hud-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-family: monospace;
+}
+
+/* Placeholder HUD state */
+.hud-placeholder {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  font-family: monospace;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  overflow: hidden;
+}
+
+.scanner-line-loop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(194, 164, 255, 0.15);
+  animation: scanLoop 2.5s linear infinite;
+}
+
+@keyframes scanLoop {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* ── Responsive pyramid node sizes ── */
+@media only screen and (max-width: 1024px) {
   .techstack-content h2 {
     font-size: 50px;
-    margin-bottom: 35px;
-  }
-  
-  .techstack-pyramid {
-    gap: 8px;
-  }
-  
-  .techstack-row {
-    gap: 8px;
-  }
-  
-  .techstack-item {
-    width: 45px;
-    height: 56px;
-    padding: 6px;
-  }
-  
-  .techstack-item img {
-    width: 22px;
-    height: 22px;
-  }
-  
-  .techstack-item span {
-    font-size: 7px;
-    max-width: 42px;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   .techstack-content h2 {
-    font-size: 36px;
+    font-size: 40px;
+    margin-bottom: 30px;
   }
-  
-  .techstack-pyramid {
-    gap: 6px;
+
+  .node-icon-wrapper {
+    width: 42px;
+    height: 42px;
   }
-  
+
+  .node-icon-wrapper img {
+    width: 18px;
+    height: 18px;
+  }
+
   .techstack-row {
-    gap: 6px;
+    gap: 8px;
+  }
+
+  .techstack-pyramid {
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .tech-hud-panel {
+    max-width: 100%;
+  }
+
+  .hud-card-wrapper {
+    padding: 16px;
   }
   
-  .techstack-item {
-    width: 40px;
-    height: 50px;
-    padding: 5px;
-    border-radius: 8px;
-  }
-  
-  .techstack-item img {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .techstack-item span {
-    font-size: 6px;
-    max-width: 38px;
-    margin-top: 3px;
+  .hud-content {
+    gap: 15px;
   }
 }

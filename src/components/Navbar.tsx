@@ -1,14 +1,35 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
 import Lenis from "lenis";
+import CommandPalette from "./CommandPalette";
 import "./styles/Navbar.css";
 
 gsap.registerPlugin(ScrollTrigger);
 export let lenis: Lenis | null = null;
 
 const Navbar = () => {
+  const [isPaletteOpen, setIsPaletteOpen] = useState(false);
+  const [isMac, setIsMac] = useState(false);
+
+  useEffect(() => {
+    setIsMac(window.navigator.userAgent.includes("Mac"));
+
+    // Keydown listener for Command Palette (Ctrl+K or Cmd+K)
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setIsPaletteOpen((prev) => !prev);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   useEffect(() => {
     // Initialize Lenis smooth scroll
     lenis = new Lenis({
@@ -67,14 +88,14 @@ const Navbar = () => {
     <>
       <div className="header">
         <a href="/#" className="navbar-title" data-cursor="disable">
-          RH
+          TVP
         </a>
         <a
-          href="mailto:redoyanul1234@gmail.com"
+          href="mailto:contact@tranvanphu.dev"
           className="navbar-connect"
           data-cursor="disable"
         >
-          redoyanul1234@gmail.com
+          contact@tranvanphu.dev
         </a>
         <ul>
           <li>
@@ -92,12 +113,48 @@ const Navbar = () => {
               <HoverLinks text="CONTACT" />
             </a>
           </li>
+          <li style={{ display: "flex", alignItems: "center" }}>
+            <button
+              onClick={() => setIsPaletteOpen(true)}
+              className="navbar-search-trigger"
+              data-cursor="disable"
+              style={{
+                background: "transparent",
+                border: "none",
+                color: "#eae5ec",
+                cursor: "pointer",
+                padding: "0",
+                display: "flex",
+                alignItems: "center",
+                gap: "5px",
+                fontSize: "inherit",
+                fontWeight: "inherit",
+              }}
+            >
+              <HoverLinks text="SEARCH" />
+              <span className="search-kbd-badge" style={{
+                fontSize: "9px",
+                background: "rgba(255, 255, 255, 0.1)",
+                border: "1px solid rgba(255, 255, 255, 0.15)",
+                padding: "2px 5px",
+                borderRadius: "4px",
+                color: "rgba(255,255,255,0.6)",
+                fontFamily: "monospace",
+                marginLeft: "2px",
+                lineHeight: "1"
+              }}>
+                {isMac ? "⌘K" : "Ctrl+K"}
+              </span>
+            </button>
+          </li>
         </ul>
       </div>
 
       <div className="landing-circle1"></div>
       <div className="landing-circle2"></div>
       <div className="nav-fade"></div>
+
+      <CommandPalette isOpen={isPaletteOpen} onClose={() => setIsPaletteOpen(false)} />
     </>
   );
 };

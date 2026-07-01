@@ -189,3 +189,18 @@ body {
     font-size: 40px;
   }
 }
+
+/* Interactive Ambient mouse-glow bleeding background effect */
+.mouse-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh),
+    rgba(194, 164, 255, 0.05) 0%,
+    rgba(244, 63, 94, 0.03) 40%,
+    transparent 100%
+  );
+  mix-blend-mode: screen;
+}

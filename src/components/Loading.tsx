@@ -2,13 +2,21 @@ import { useEffect, useState } from "react";
 import "./styles/Loading.css";
 import { useLoading } from "../context/LoadingProvider";
 
-import Marquee from "react-fast-marquee";
-
 const Loading = ({ percent }: { percent: number }) => {
   const { setIsLoading } = useLoading();
   const [loaded, setLoaded] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [clicked, setClicked] = useState(false);
+  const [statusText, setStatusText] = useState("INITIALIZING");
+
+  // Update status text based on progress
+  useEffect(() => {
+    if (percent < 20) setStatusText("INITIALIZING");
+    else if (percent < 50) setStatusText("LOADING ASSETS");
+    else if (percent < 80) setStatusText("BUILDING SCENE");
+    else if (percent < 100) setStatusText("ALMOST READY");
+    else setStatusText("READY");
+  }, [percent]);
 
   if (percent >= 100) {
     setTimeout(() => {
@@ -33,55 +41,80 @@ const Loading = ({ percent }: { percent: number }) => {
     });
   }, [isLoaded]);
 
-  function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
-    const { currentTarget: target } = e;
-    const rect = target.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    target.style.setProperty("--mouse-x", `${x}px`);
-    target.style.setProperty("--mouse-y", `${y}px`);
-  }
+  // Particles positions (static, generated once)
+  const particles = [
+    { x: "15%", y: "70%", dur: "7s", delay: "0s",   dx: "15px" },
+    { x: "30%", y: "80%", dur: "9s", delay: "1.2s",  dx: "-10px" },
+    { x: "50%", y: "85%", dur: "6s", delay: "0.5s",  dx: "20px" },
+    { x: "65%", y: "75%", dur: "8s", delay: "2s",    dx: "-18px" },
+    { x: "80%", y: "65%", dur: "11s", delay: "0.8s", dx: "12px" },
+    { x: "20%", y: "40%", dur: "9s", delay: "3s",    dx: "-8px" },
+    { x: "75%", y: "30%", dur: "7s", delay: "1.5s",  dx: "10px" },
+    { x: "45%", y: "20%", dur: "10s", delay: "2.5s", dx: "-15px" },
+  ];
 
   return (
     <>
+      {/* Header */}
       <div className="loading-header">
         <a href="/#" className="loader-title" data-cursor="disable">
-          RedoyanulHaque
+          TranVanPhu
         </a>
-        <div className={`loaderGame ${clicked && "loader-out"}`}>
-          <div className="loaderGame-container">
-            <div className="loaderGame-in">
-              {[...Array(27)].map((_, index) => (
-                <div className="loaderGame-line" key={index}></div>
-              ))}
-            </div>
-            <div className="loaderGame-ball"></div>
-          </div>
-        </div>
       </div>
+
+      {/* Main screen */}
       <div className="loading-screen">
-        <div className="loading-marquee">
-          <Marquee>
-            <span>&nbsp; AI Engineer &nbsp;</span> <span>&nbsp; Full Stack Developer &nbsp;</span>
-            <span>&nbsp; AI Engineer &nbsp;</span> <span>&nbsp; Full Stack Developer &nbsp;</span>
-          </Marquee>
-        </div>
-        <div
-          className={`loading-wrap ${clicked && "loading-clicked"}`}
-          onMouseMove={(e) => handleMouseMove(e)}
-        >
-          <div className="loading-hover"></div>
-          <div className={`loading-button ${loaded && "loading-complete"}`}>
-            <div className="loading-container">
-              <div className="loading-content">
-                <div className="loading-content-in">
-                  Loading <span>{percent}%</span>
-                </div>
-              </div>
-              <div className="loading-box"></div>
+        {/* Ambient rings */}
+        <div className="loader-ring loader-ring-1" />
+        <div className="loader-ring loader-ring-2" />
+        <div className="loader-ring loader-ring-3" />
+
+        {/* Glow orb */}
+        <div className="loader-orb" />
+
+        {/* Floating particles */}
+        {particles.map((p, i) => (
+          <div
+            key={i}
+            className="loader-particle"
+            style={{
+              left: p.x,
+              top: p.y,
+              "--dur": p.dur,
+              "--delay": p.delay,
+              "--dx": p.dx,
+            } as React.CSSProperties}
+          />
+        ))}
+
+        {/* Central card */}
+        <div className={`loading-wrap ${clicked ? "loading-clicked" : ""}`}>
+          {/* Corner brackets */}
+          <div className="loader-bracket loader-bracket-tl" />
+          <div className="loader-bracket loader-bracket-tr" />
+          <div className="loader-bracket loader-bracket-bl" />
+          <div className="loader-bracket loader-bracket-br" />
+
+          {/* Name block */}
+          <div className="loader-name-block">
+            <span className="loader-name-greeting">Welcome to my portfolio</span>
+            <span className="loader-name-main">
+              TRAN VAN <span className="loader-name-accent">PHU</span>
+            </span>
+            <span className="loader-name-role">Software Engineer · AI Architect</span>
+          </div>
+
+          {/* Progress */}
+          <div className={`loading-button ${loaded ? "loading-complete" : ""}`}>
+            <div className="loading-progress-track">
+              <div
+                className="loading-progress-fill"
+                style={{ width: `${percent}%` }}
+              />
             </div>
-            <div className="loading-content2">
-              <span>Welcome</span>
+            <div className="loading-status-row">
+              <span className="loading-percent">{String(percent).padStart(3, "0")}%</span>
+              <span className="loading-status-text">{statusText}</span>
             </div>
           </div>
         </div>

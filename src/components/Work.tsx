@@ -8,6 +8,12 @@ import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const repoLinks = [
+  "https://github.com/tranvanphu",
+  "https://github.com/tranvanphu/football-annotation-cv",
+  "https://github.com/tranvanphu/hand-gesture-recognition"
+];
+
 const Work = () => {
   useEffect(() => {
     // Disable pinning on mobile to allow scrolling
@@ -58,6 +64,7 @@ const Work = () => {
       ScrollTrigger.getById("work")?.kill();
     };
   }, []);
+
   return (
     <div className="work-section" id="work">
       <div className="work-container section-container">
@@ -65,23 +72,53 @@ const Work = () => {
           My <span>Work</span>
         </h2>
         <div className="work-flex">
-          {config.projects.slice(0, 5).map((project, index) => (
-            <div className="work-box" key={project.id}>
-              <div className="work-info">
-                <div className="work-title">
-                  <h3>0{index + 1}</h3>
-
-                  <div>
-                    <h4>{project.title}</h4>
-                    <p>{project.category}</p>
+          {config.projects.slice(0, 5).map((project, index) => {
+            const projectLink = repoLinks[index] || "https://github.com/tranvanphu";
+            const techList = project.technologies.split(", ");
+            
+            return (
+              <div className="work-box" key={project.id}>
+                {/* Left Side: Info & Text details */}
+                <div className="work-info-new">
+                  <div className="work-header-new">
+                    <span className="project-index">0{index + 1}</span>
+                    <span className="project-category-badge">{project.category}</span>
                   </div>
+                  
+                  <h3 className="project-title-new">{project.title}</h3>
+                  <p className="project-desc-new">{project.description}</p>
+                  
+                  <div className="project-tech-section">
+                    <h5 className="tech-heading-new">Tech Stack</h5>
+                    <div className="project-tech-grid">
+                      {techList.map((tech, idx) => (
+                        <span className="project-tech-badge-new" key={idx}>
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <a 
+                    href={projectLink} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="project-github-btn-new"
+                    data-cursor="disable"
+                  >
+                    View Codebase →
+                  </a>
                 </div>
-                <h4>Tools and features</h4>
-                <p>{project.technologies}</p>
+
+                {/* Right Side: Showcase Media */}
+                <div className="work-media-new">
+                  <div className="media-glow-effect" />
+                  <WorkImage image={project.image} alt={project.title} link={projectLink} />
+                </div>
               </div>
-              <WorkImage image={project.image} alt={project.title} />
-            </div>
-          ))}
+            );
+          })}
+
           {/* See All Works Button */}
           <div className="work-box work-box-cta">
             <div className="see-all-works">

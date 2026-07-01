@@ -9,6 +9,7 @@ import SocialIcons from "./SocialIcons";
 import WhatIDo from "./WhatIDo";
 import Work from "./Work";
 import TechStackNew from "./TechStackNew";
+import GithubStats from "./GithubStats";
 import CallToAction from "./CallToAction";
 import setSplitText from "./utils/splitText";
 
@@ -17,6 +18,17 @@ const MainContainer = ({ children }: PropsWithChildren) => {
     window.innerWidth > 1024
   );
   const [isMobile] = useState<boolean>(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      document.documentElement.style.setProperty("--mouse-x", `${e.clientX}px`);
+      document.documentElement.style.setProperty("--mouse-y", `${e.clientY}px`);
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
   useEffect(() => {
     const resizeHandler = () => {
@@ -32,6 +44,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
 
   return (
     <div className="container-main">
+      <div className="mouse-glow" />
       <Cursor />
       <Navbar />
       <SocialIcons />
@@ -43,6 +56,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
         <Career />
         <Work />
         <TechStackNew />
+        <GithubStats />
         <CallToAction />
         <Contact />
       </div>
