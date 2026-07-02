@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from "react";
 import { config } from "../config";
 import { Link } from "react-router-dom";
+import { useTranslation } from "../hooks/useTranslation";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,6 +16,8 @@ const repoLinks = [
 ];
 
 const Work = () => {
+  const { t, language } = useTranslation();
+
   useEffect(() => {
     // Disable pinning on mobile to allow scrolling
     if (window.innerWidth <= 768) return;
@@ -69,7 +72,7 @@ const Work = () => {
     <div className="work-section" id="work">
       <div className="work-container section-container">
         <h2>
-          My <span>Work</span>
+          {t('work.titleMy')} <span>{t('work.titleWork')}</span>
         </h2>
         <div className="work-flex">
           {config.projects.slice(0, 5).map((project, index) => {
@@ -86,10 +89,10 @@ const Work = () => {
                   </div>
                   
                   <h3 className="project-title-new">{project.title}</h3>
-                  <p className="project-desc-new">{project.description}</p>
+                  <p className="project-desc-new">{language === 'vi' ? project.descriptionVi || project.description : project.description}</p>
                   
                   <div className="project-tech-section">
-                    <h5 className="tech-heading-new">Tech Stack</h5>
+                    <h5 className="tech-heading-new">{t('work.techStack')}</h5>
                     <div className="project-tech-grid">
                       {techList.map((tech, idx) => (
                         <span className="project-tech-badge-new" key={idx}>
@@ -106,7 +109,7 @@ const Work = () => {
                     className="project-github-btn-new"
                     data-cursor="disable"
                   >
-                    View Codebase →
+                    {t('work.viewCode')}
                   </a>
                 </div>
 
@@ -122,10 +125,10 @@ const Work = () => {
           {/* See All Works Button */}
           <div className="work-box work-box-cta">
             <div className="see-all-works">
-              <h3>Want to see more?</h3>
-              <p>Explore all of my projects and creations</p>
+              <h3>{t('work.seeMoreTitle')}</h3>
+              <p>{t('work.seeMoreDesc')}</p>
               <Link to="/myworks" className="see-all-btn" data-cursor="disable">
-                See All Works →
+                {t('work.seeAllBtn')}
               </Link>
             </div>
           </div>

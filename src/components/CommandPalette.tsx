@@ -2,12 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { lenis } from "./Navbar";
 import { useNavigate } from "react-router-dom";
 import "./styles/CommandPalette.css";
+import { useTranslation } from "../hooks/useTranslation";
 
 interface CommandItem {
   id: string;
   title: string;
   shortcut?: string;
-  category: "Navigation" | "Interactions" | "Socials";
+  category: string;
   action: () => void;
   icon: string;
 }
@@ -23,6 +24,7 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   // Focus input when palette opens
   useEffect(() => {
@@ -70,33 +72,33 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose }) => {
   const commands: CommandItem[] = [
     {
       id: "nav-about",
-      title: "Go to About Section",
+      title: t('command.goAbout'),
       shortcut: "G A",
-      category: "Navigation",
+      category: t('command.navigation'),
       icon: "👤",
       action: () => scrollToSection("#about"),
     },
     {
       id: "nav-work",
-      title: "Go to Work / Projects",
+      title: t('command.goWork'),
       shortcut: "G W",
-      category: "Navigation",
+      category: t('command.navigation'),
       icon: "💼",
       action: () => scrollToSection("#work"),
     },
     {
       id: "nav-contact",
-      title: "Go to Contact",
+      title: t('command.goContact'),
       shortcut: "G C",
-      category: "Navigation",
+      category: t('command.navigation'),
       icon: "📞",
       action: () => scrollToSection("#contact"),
     },
     {
       id: "interact-chess",
-      title: "Play Chess & Chat with AI",
+      title: t('command.playChess'),
       shortcut: "P C",
-      category: "Interactions",
+      category: t('command.interactions'),
       icon: "♟️",
       action: () => {
         onClose();
@@ -105,9 +107,9 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose }) => {
     },
     {
       id: "interact-email",
-      title: "Send Email (contact@tranvanphu.dev)",
+      title: t('command.sendEmail'),
       shortcut: "S E",
-      category: "Interactions",
+      category: t('command.interactions'),
       icon: "📧",
       action: () => {
         onClose();
@@ -116,8 +118,8 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose }) => {
     },
     {
       id: "social-github",
-      title: "View GitHub Profile",
-      category: "Socials",
+      title: t('command.viewGithub'),
+      category: t('command.socials'),
       icon: "💻",
       action: () => {
         onClose();
@@ -126,8 +128,8 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose }) => {
     },
     {
       id: "social-linkedin",
-      title: "Connect on LinkedIn",
-      category: "Socials",
+      title: t('command.connectLinkedin'),
+      category: t('command.socials'),
       icon: "🤝",
       action: () => {
         onClose();
@@ -181,7 +183,7 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose }) => {
             ref={inputRef}
             type="text"
             className="command-palette-input"
-            placeholder="Type a command or search..."
+            placeholder={t('command.placeholder')}
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);
@@ -193,7 +195,7 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose }) => {
 
         <div className="command-palette-results">
           {filteredCommands.length === 0 ? (
-            <div className="command-palette-empty">No results found for "{search}"</div>
+            <div className="command-palette-empty">{t('command.noResults')} "{search}"</div>
           ) : (
             // Group by category
             Object.entries(
@@ -236,13 +238,13 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose }) => {
 
         <div className="command-palette-footer">
           <span className="footer-hint">
-            <kbd>↑↓</kbd> to navigate
+            <kbd>↑↓</kbd> {t('command.navigate')}
           </span>
           <span className="footer-hint">
-            <kbd>↵</kbd> to select
+            <kbd>↵</kbd> {t('command.select')}
           </span>
           <span className="footer-hint">
-            <kbd>esc</kbd> to close
+            <kbd>esc</kbd> {t('command.close')}
           </span>
         </div>
       </div>

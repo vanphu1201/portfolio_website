@@ -4,7 +4,9 @@ import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
 import Lenis from "lenis";
 import CommandPalette from "./CommandPalette";
+import { useTranslation } from "../hooks/useTranslation";
 import "./styles/Navbar.css";
+import "./styles/LanguageToggle.css";
 
 gsap.registerPlugin(ScrollTrigger);
 export let lenis: Lenis | null = null;
@@ -12,6 +14,7 @@ export let lenis: Lenis | null = null;
 const Navbar = () => {
   const [isPaletteOpen, setIsPaletteOpen] = useState(false);
   const [isMac, setIsMac] = useState(false);
+  const { language, toggleLanguage, t } = useTranslation();
 
   useEffect(() => {
     setIsMac(window.navigator.userAgent.includes("Mac"));
@@ -100,17 +103,17 @@ const Navbar = () => {
         <ul>
           <li>
             <a data-href="#about" href="#about">
-              <HoverLinks text="ABOUT" />
+              <HoverLinks text={t('navbar.about')} />
             </a>
           </li>
           <li>
             <a data-href="#work" href="#work">
-              <HoverLinks text="WORK" />
+              <HoverLinks text={t('navbar.work')} />
             </a>
           </li>
           <li>
             <a data-href="#contact" href="#contact">
-              <HoverLinks text="CONTACT" />
+              <HoverLinks text={t('navbar.contact')} />
             </a>
           </li>
           <li style={{ display: "flex", alignItems: "center" }}>
@@ -131,7 +134,7 @@ const Navbar = () => {
                 fontWeight: "inherit",
               }}
             >
-              <HoverLinks text="SEARCH" />
+              <HoverLinks text={t('navbar.search')} />
               <span className="search-kbd-badge" style={{
                 fontSize: "9px",
                 background: "rgba(255, 255, 255, 0.1)",
@@ -146,6 +149,32 @@ const Navbar = () => {
                 {isMac ? "⌘K" : "Ctrl+K"}
               </span>
             </button>
+          </li>
+          <li style={{ display: "flex", alignItems: "center" }}>
+            <div className="lang-toggle-wrapper">
+              <div
+                className={`lang-toggle ${language === 'vi' ? 'vi' : 'en'}`}
+                onClick={toggleLanguage}
+                data-cursor="disable"
+                title={language === 'en' ? 'Switch to Vietnamese' : 'Chuyển sang Tiếng Anh'}
+              >
+                <div className="lang-toggle-slider" />
+                <button
+                  className={`lang-option ${language === 'en' ? 'active' : ''}`}
+                  type="button"
+                  tabIndex={-1}
+                >
+                  EN
+                </button>
+                <button
+                  className={`lang-option ${language === 'vi' ? 'active' : ''}`}
+                  type="button"
+                  tabIndex={-1}
+                >
+                  VN
+                </button>
+              </div>
+            </div>
           </li>
         </ul>
       </div>

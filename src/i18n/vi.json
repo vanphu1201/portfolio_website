@@ -1,0 +1,133 @@
+{
+  "landing": {
+    "greeting": "Xin chào! Tôi là",
+    "an": "Một",
+    "role1": "Kỹ sư AI",
+    "role2": "Lập trình viên Full-Stack"
+  },
+  "navbar": {
+    "about": "GIỚI THIỆU",
+    "work": "DỰ ÁN",
+    "contact": "LIÊN HỆ",
+    "search": "TÌM KIẾM"
+  },
+  "about": {
+    "name": "TRẦN VĂN PHÚ",
+    "subtitle": "KỸ SƯ AI & LẬP TRÌNH VIÊN FULL-STACK",
+    "academicTag": "Hành trình học vấn",
+    "university": "ĐẠI HỌC",
+    "universityDesc": "Theo học Khoa học Máy tính & Hệ thống Thông minh tại <strong>HCMUTE</strong>. Chương trình kỹ thuật hàng đầu tập trung vào kiến trúc phần mềm mở rộng và ứng dụng deep learning.",
+    "competitions": "CUỘC THI",
+    "competitionsDesc": "Tích cực tham gia hackathon và các cuộc thi AI, xây dựng các pipeline tracking thời gian thực.",
+    "research": "NGHIÊN CỨU",
+    "researchDesc": "Huấn luyện mô hình thị giác máy tính và nghiên cứu mạng nơ-ron cho chú thích video tự động.",
+    "coreValueTag": "Giá trị cốt lõi",
+    "mindset": "Tư duy",
+    "mindsetText": "<strong>Xây dựng hơn cả phần mềm.</strong> Đam mê mang lại cho tôi <strong>kỷ luật</strong> và <strong>sự tập trung</strong>.",
+    "photoTag": "📷 NHIẾP ẢNH ĐÊM",
+    "photoDesc": "Rèn luyện thể chất và tinh thần là con đường dẫn đến sự xuất sắc.",
+    "engineeringTag": "Kỹ thuật",
+    "craft": "Tay nghề",
+    "craftText": "Xây dựng <strong>ứng dụng</strong>, <strong>website</strong>, và <strong>tự động hóa</strong> có khả năng mở rộng.",
+    "craftDesc": "Tận dụng machine learning & công nghệ web hiện đại để xây dựng giải pháp phù hợp nhu cầu người dùng.",
+    "availableStatus": "Sẵn sàng nhận việc"
+  },
+  "whatido": {
+    "title_w": "N",
+    "title_hat": "HỮNG GÌ",
+    "title_i": "TÔI",
+    "title_do": "LÀM",
+    "skillset": "Kỹ năng & công cụ"
+  },
+  "career": {
+    "title": "Sự nghiệp <span>&</span><br /> Kinh nghiệm",
+    "titleText": "Sự nghiệp",
+    "titleAnd": "&",
+    "titleExp": "Kinh nghiệm"
+  },
+  "work": {
+    "title": "Dự <span>Án</span>",
+    "titleMy": "Dự",
+    "titleWork": "Án",
+    "techStack": "Công nghệ",
+    "viewCode": "Xem mã nguồn →",
+    "seeMoreTitle": "Muốn xem thêm?",
+    "seeMoreDesc": "Khám phá tất cả dự án và sản phẩm của tôi",
+    "seeAllBtn": "Xem tất cả →"
+  },
+  "techstack": {
+    "title": "Công <span>Nghệ</span>",
+    "titleTech": "Công",
+    "titleStack": "Nghệ",
+    "statusActive": "TRẠNG THÁI: HOẠT ĐỘNG",
+    "proficiency": "THÀNH THẠO",
+    "scanPlaceholder": "HỆ THỐNG QUÉT: DI CHUỘT QUA MỘT NODE CÔNG NGHỆ ĐỂ PHÂN TÍCH CHỈ SỐ KỸ NĂNG..."
+  },
+  "github": {
+    "title": "Code & Đóng góp",
+    "contributionActivity": "Hoạt động đóng góp trên GitHub",
+    "calculating": "Đang tính...",
+    "contributionsYear": "1.452 đóng góp trong năm qua",
+    "less": "Ít",
+    "more": "Nhiều",
+    "featuredRepos": "Kho lưu trữ nổi bật",
+    "followers": "Người theo dõi",
+    "repositories": "Kho lưu trữ",
+    "githubStars": "Sao GitHub",
+    "repoDesc1": "Hệ thống theo dõi quang học & pipeline chú thích tự động cho phân tích video bóng đá sử dụng thị giác máy tính và YOLOv8.",
+    "repoDesc2": "Công cụ Xử lý Ngôn ngữ Tự nhiên (NLP) để phân tích lời rap Việt Nam, sơ đồ vần và chủ đề."
+  },
+  "cta": {
+    "playWithMe": "Chơi cùng tôi →",
+    "hireMe": "Tuyển tôi →"
+  },
+  "contact": {
+    "heading": "Kết nối",
+    "email": "Email",
+    "location": "Địa điểm",
+    "socialLinks": "Mạng xã hội",
+    "designedBy": "Thiết kế và phát triển <br /> bởi",
+    "sendMessage": "Gửi tin nhắn",
+    "yourName": "Họ và tên",
+    "yourEmail": "Email của bạn",
+    "yourMessage": "Tin nhắn của bạn",
+    "namePlaceholder": "VD: Nguyễn Văn A",
+    "emailPlaceholder": "VD: nguyenvana@example.com",
+    "messagePlaceholder": "Hãy cùng xây dựng điều tuyệt vời...",
+    "submitBtn": "Gửi tin nhắn →",
+    "sending": "Đang gửi...",
+    "successTitle": "Đã gửi!",
+    "successDesc": "Cảm ơn bạn đã liên hệ, Trần Văn Phú sẽ phản hồi sớm nhất.",
+    "sendAnother": "Gửi tin nhắn khác",
+    "errorName": "Vui lòng nhập tên",
+    "errorEmail": "Vui lòng nhập email",
+    "errorEmailFormat": "Email không hợp lệ",
+    "errorMessage": "Vui lòng nhập tin nhắn"
+  },
+  "loading": {
+    "welcome": "Chào mừng đến portfolio của tôi",
+    "role": "Kỹ sư Phần mềm · Kiến trúc sư AI",
+    "initializing": "KHỞI TẠO",
+    "loadingAssets": "TẢI TÀI NGUYÊN",
+    "buildingScene": "XÂY DỰNG CẢNH",
+    "almostReady": "SẮP XONG",
+    "ready": "SẴN SÀNG"
+  },
+  "command": {
+    "placeholder": "Nhập lệnh hoặc tìm kiếm...",
+    "goAbout": "Đến phần Giới thiệu",
+    "goWork": "Đến phần Dự án",
+    "goContact": "Đến phần Liên hệ",
+    "playChess": "Chơi cờ & Chat với AI",
+    "sendEmail": "Gửi Email (contact@tranvanphu.dev)",
+    "viewGithub": "Xem hồ sơ GitHub",
+    "connectLinkedin": "Kết nối trên LinkedIn",
+    "navigation": "Điều hướng",
+    "interactions": "Tương tác",
+    "socials": "Mạng xã hội",
+    "noResults": "Không tìm thấy kết quả cho",
+    "navigate": "để điều hướng",
+    "select": "để chọn",
+    "close": "để đóng"
+  }
+}

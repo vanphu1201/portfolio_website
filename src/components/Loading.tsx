@@ -1,22 +1,24 @@
 import { useEffect, useState } from "react";
 import "./styles/Loading.css";
 import { useLoading } from "../context/LoadingProvider";
+import { useTranslation } from "../hooks/useTranslation";
 
 const Loading = ({ percent }: { percent: number }) => {
   const { setIsLoading } = useLoading();
+  const { t } = useTranslation();
   const [loaded, setLoaded] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [clicked, setClicked] = useState(false);
-  const [statusText, setStatusText] = useState("INITIALIZING");
+  const [statusText, setStatusText] = useState("");
 
   // Update status text based on progress
   useEffect(() => {
-    if (percent < 20) setStatusText("INITIALIZING");
-    else if (percent < 50) setStatusText("LOADING ASSETS");
-    else if (percent < 80) setStatusText("BUILDING SCENE");
-    else if (percent < 100) setStatusText("ALMOST READY");
-    else setStatusText("READY");
-  }, [percent]);
+    if (percent < 20) setStatusText(t('loading.initializing'));
+    else if (percent < 50) setStatusText(t('loading.loadingAssets'));
+    else if (percent < 80) setStatusText(t('loading.buildingScene'));
+    else if (percent < 100) setStatusText(t('loading.almostReady'));
+    else setStatusText(t('loading.ready'));
+  }, [percent, t]);
 
   if (percent >= 100) {
     setTimeout(() => {
@@ -97,11 +99,11 @@ const Loading = ({ percent }: { percent: number }) => {
 
           {/* Name block */}
           <div className="loader-name-block">
-            <span className="loader-name-greeting">Welcome to my portfolio</span>
+            <span className="loader-name-greeting">{t('loading.welcome')}</span>
             <span className="loader-name-main">
               TRAN VAN <span className="loader-name-accent">PHU</span>
             </span>
-            <span className="loader-name-role">Software Engineer · AI Architect</span>
+            <span className="loader-name-role">{t('loading.role')}</span>
           </div>
 
           {/* Progress */}

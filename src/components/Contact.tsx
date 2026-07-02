@@ -4,10 +4,12 @@ import "./styles/Contact.css";
 import { config } from "../config";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "../hooks/useTranslation";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success">("idle");
   const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({});
@@ -50,13 +52,13 @@ const Contact = () => {
 
   const validateForm = () => {
     const newErrors: typeof errors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.name.trim()) newErrors.name = t('contact.errorName');
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = t('contact.errorEmail');
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Invalid email format";
+      newErrors.email = t('contact.errorEmailFormat');
     }
-    if (!formData.message.trim()) newErrors.message = "Message is required";
+    if (!formData.message.trim()) newErrors.message = t('contact.errorMessage');
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -77,28 +79,28 @@ const Contact = () => {
   return (
     <div className="contact-section section-container" id="contact">
       <div className="contact-container">
-        <h3 className="contact-main-heading">Let's Connect</h3>
+        <h3 className="contact-main-heading">{t('contact.heading')}</h3>
         
         <div className="contact-grid-layout">
           
           {/* Left Column: Contact details & Socials */}
           <div className="contact-info-left">
             <div className="contact-info-group">
-              <h4>Email</h4>
+              <h4>{t('contact.email')}</h4>
               <p>
                 <a href={`mailto:${config.contact.email}`} className="contact-email-link" data-cursor="disable">
                   {config.contact.email}
                 </a>
               </p>
               
-              <h4>Location</h4>
+              <h4>{t('contact.location')}</h4>
               <p>
                 <span className="contact-location-text">{config.social.location}</span>
               </p>
             </div>
 
             <div className="contact-socials-group">
-              <h4>Social Links</h4>
+              <h4>{t('contact.socialLinks')}</h4>
               <div className="contact-social-links-grid">
                 <a href={config.contact.github} target="_blank" rel="noopener noreferrer" data-cursor="disable" className="contact-social">
                   Github <MdArrowOutward />
@@ -116,9 +118,7 @@ const Contact = () => {
             </div>
 
             <div className="contact-footer-info">
-              <h2>
-                Designed and Developed <br /> by <span>{config.developer.fullName}</span>
-              </h2>
+              <h2 dangerouslySetInnerHTML={{ __html: `${t('contact.designedBy')} <span>${config.developer.fullName}</span>` }} />
               <h5>
                 <MdCopyright /> {new Date().getFullYear()}
               </h5>
@@ -133,56 +133,56 @@ const Contact = () => {
                   <div className="success-icon-wrapper">
                     <MdCheckCircle className="success-icon" />
                   </div>
-                  <h3>Message Sent!</h3>
-                  <p>Thank you for reaching out, Tran Van Phu will get back to you shortly.</p>
+                  <h3>{t('contact.successTitle')}</h3>
+                  <p>{t('contact.successDesc')}</p>
                   <button 
                     onClick={() => setStatus("idle")} 
                     className="send-another-btn"
                     data-cursor="disable"
                   >
-                    Send Another Message
+                    {t('contact.sendAnother')}
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="contact-form-element">
-                  <h3>Send a Message</h3>
+                  <h3>{t('contact.sendMessage')}</h3>
                   
                   <div className="form-group">
-                    <label htmlFor="name">Your Name</label>
+                    <label htmlFor="name">{t('contact.yourName')}</label>
                     <input 
                       type="text" 
                       id="name"
                       name="name" 
                       value={formData.name} 
                       onChange={handleChange}
-                      placeholder="e.g. John Doe"
+                      placeholder={t('contact.namePlaceholder')}
                       className={errors.name ? "error-input" : ""}
                     />
                     {errors.name && <span className="error-message">{errors.name}</span>}
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="email">Your Email</label>
+                    <label htmlFor="email">{t('contact.yourEmail')}</label>
                     <input 
                       type="email" 
                       id="email"
                       name="email" 
                       value={formData.email} 
                       onChange={handleChange}
-                      placeholder="e.g. johndoe@example.com"
+                      placeholder={t('contact.emailPlaceholder')}
                       className={errors.email ? "error-input" : ""}
                     />
                     {errors.email && <span className="error-message">{errors.email}</span>}
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="message">Your Message</label>
+                    <label htmlFor="message">{t('contact.yourMessage')}</label>
                     <textarea 
                       id="message"
                       name="message" 
                       value={formData.message} 
                       onChange={handleChange}
-                      placeholder="Let's build something awesome together..."
+                      placeholder={t('contact.messagePlaceholder')}
                       rows={5}
                       className={errors.message ? "error-input" : ""}
                     />
@@ -197,10 +197,10 @@ const Contact = () => {
                   >
                     {status === "sending" ? (
                       <span className="submit-spinner-text">
-                        <span className="spinner-dot" /> Sending...
+                        <span className="spinner-dot" /> {t('contact.sending')}
                       </span>
                     ) : (
-                      "Send Message →"
+                      t('contact.submitBtn')
                     )}
                   </button>
                 </form>

@@ -1,0 +1,133 @@
+{
+  "landing": {
+    "greeting": "Hello! I'm",
+    "an": "An",
+    "role1": "AI Engineer",
+    "role2": "Full-Stack Developer"
+  },
+  "navbar": {
+    "about": "ABOUT",
+    "work": "WORK",
+    "contact": "CONTACT",
+    "search": "SEARCH"
+  },
+  "about": {
+    "name": "TRAN VAN PHU",
+    "subtitle": "AI ENGINEER & FULL-STACK DEVELOPER",
+    "academicTag": "Academic Journey",
+    "university": "UNIVERSITY",
+    "universityDesc": "Pursuing Computer Science & Intelligent Systems at <strong>HCMUTE</strong>. Top-tier technical curriculum focused on engineering scalable software architectures and deep learning applications.",
+    "competitions": "COMPETITIONS",
+    "competitionsDesc": "Active hackathon competitor and AI challenge participant, building real-time tracking pipelines.",
+    "research": "RESEARCH",
+    "researchDesc": "Training computer vision models and investigating neural networks for automated video annotations.",
+    "coreValueTag": "Core Value",
+    "mindset": "Mindset",
+    "mindsetText": "<strong>Building more than software.</strong> My passions provide <strong>discipline</strong> and <strong>focus</strong>.",
+    "photoTag": "📷 NIGHT PHOTOGRAPHY",
+    "photoDesc": "Mastering body and mind is my path to excellence.",
+    "engineeringTag": "Engineering",
+    "craft": "Craft",
+    "craftText": "Building scalable <strong>apps</strong>, <strong>websites</strong>, and <strong>automations</strong>.",
+    "craftDesc": "Leveraging machine learning & modern web stacks to build solutions matching user needs.",
+    "availableStatus": "Available for Hire"
+  },
+  "whatido": {
+    "title_w": "W",
+    "title_hat": "HAT",
+    "title_i": "I",
+    "title_do": "DO",
+    "skillset": "Skillset & tools"
+  },
+  "career": {
+    "title": "My Career <span>&</span><br /> Experience",
+    "titleText": "My Career",
+    "titleAnd": "&",
+    "titleExp": "Experience"
+  },
+  "work": {
+    "title": "My <span>Work</span>",
+    "titleMy": "My",
+    "titleWork": "Work",
+    "techStack": "Tech Stack",
+    "viewCode": "View Codebase →",
+    "seeMoreTitle": "Want to see more?",
+    "seeMoreDesc": "Explore all of my projects and creations",
+    "seeAllBtn": "See All Works →"
+  },
+  "techstack": {
+    "title": "Tech <span>Stack</span>",
+    "titleTech": "Tech",
+    "titleStack": "Stack",
+    "statusActive": "STATUS: ACTIVE",
+    "proficiency": "PROFICIENCY",
+    "scanPlaceholder": "SYSTEM SCANNING: HOVER OVER A TECH NODE TO ANALYZE SKILL METRICS..."
+  },
+  "github": {
+    "title": "Code & Contributions",
+    "contributionActivity": "Contribution activity on GitHub",
+    "calculating": "Calculating...",
+    "contributionsYear": "1,452 contributions in the last year",
+    "less": "Less",
+    "more": "More",
+    "featuredRepos": "Featured Repositories",
+    "followers": "Followers",
+    "repositories": "Repositories",
+    "githubStars": "GitHub Stars",
+    "repoDesc1": "Optical tracking system & auto-annotation pipelines for soccer match video analysis using computer vision and YOLOv8.",
+    "repoDesc2": "Natural Language Processing (NLP) tools for analyzing Vietnamese rap lyrics, rhyme schemes, and thematic patterns."
+  },
+  "cta": {
+    "playWithMe": "Play With Me →",
+    "hireMe": "Hire Me →"
+  },
+  "contact": {
+    "heading": "Let's Connect",
+    "email": "Email",
+    "location": "Location",
+    "socialLinks": "Social Links",
+    "designedBy": "Designed and Developed <br /> by",
+    "sendMessage": "Send a Message",
+    "yourName": "Your Name",
+    "yourEmail": "Your Email",
+    "yourMessage": "Your Message",
+    "namePlaceholder": "e.g. John Doe",
+    "emailPlaceholder": "e.g. johndoe@example.com",
+    "messagePlaceholder": "Let's build something awesome together...",
+    "submitBtn": "Send Message →",
+    "sending": "Sending...",
+    "successTitle": "Message Sent!",
+    "successDesc": "Thank you for reaching out, Tran Van Phu will get back to you shortly.",
+    "sendAnother": "Send Another Message",
+    "errorName": "Name is required",
+    "errorEmail": "Email is required",
+    "errorEmailFormat": "Invalid email format",
+    "errorMessage": "Message is required"
+  },
+  "loading": {
+    "welcome": "Welcome to my portfolio",
+    "role": "Software Engineer · AI Architect",
+    "initializing": "INITIALIZING",
+    "loadingAssets": "LOADING ASSETS",
+    "buildingScene": "BUILDING SCENE",
+    "almostReady": "ALMOST READY",
+    "ready": "READY"
+  },
+  "command": {
+    "placeholder": "Type a command or search...",
+    "goAbout": "Go to About Section",
+    "goWork": "Go to Work / Projects",
+    "goContact": "Go to Contact",
+    "playChess": "Play Chess & Chat with AI",
+    "sendEmail": "Send Email (contact@tranvanphu.dev)",
+    "viewGithub": "View GitHub Profile",
+    "connectLinkedin": "Connect on LinkedIn",
+    "navigation": "Navigation",
+    "interactions": "Interactions",
+    "socials": "Socials",
+    "noResults": "No results found for",
+    "navigate": "to navigate",
+    "select": "to select",
+    "close": "to close"
+  }
+}

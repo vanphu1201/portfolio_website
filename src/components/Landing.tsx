@@ -1,8 +1,10 @@
 import { PropsWithChildren } from "react";
 import "./styles/Landing.css";
 import { config } from "../config";
+import { useTranslation } from "../hooks/useTranslation";
 
 const Landing = ({ children }: PropsWithChildren) => {
+  const { t } = useTranslation();
   const nameParts = config.developer.fullName.split(" ");
   const firstName = nameParts[0] || config.developer.name;
   const lastName = nameParts.slice(1).join(" ") || "";
@@ -12,7 +14,7 @@ const Landing = ({ children }: PropsWithChildren) => {
       <div className="landing-section" id="landingDiv">
         <div className="landing-container">
           <div className="landing-intro">
-            <h2>Hello! I'm</h2>
+            <h2>{t('landing.greeting')}</h2>
             <h1>
               {firstName.toUpperCase()}
               {' '}

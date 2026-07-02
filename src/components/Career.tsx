@@ -1,13 +1,16 @@
 import "./styles/Career.css";
 import { config } from "../config";
+import { useTranslation } from "../hooks/useTranslation";
 
 const Career = () => {
+  const { t, language } = useTranslation();
+
   return (
     <div className="career-section section-container" id="experience">
       <div className="career-container">
         <h2>
-          My Career <span>&</span>
-          <br /> Experience
+          {t('career.titleText')} <span>&</span>
+          <br /> {t('career.titleExp')}
         </h2>
         <div className="career-info">
           {/* Central Line */}
@@ -29,17 +32,17 @@ const Career = () => {
               <div className="career-card-content">
                 <div className="career-card-header">
                   <span className="career-period-tag">{exp.period}</span>
-                  <span className="career-location-tag">{exp.location}</span>
+                  <span className="career-location-tag">{language === 'vi' ? exp.locationVi || exp.location : exp.location}</span>
                 </div>
                 
-                <h4 className="career-card-role">{exp.position}</h4>
-                <h5 className="career-card-company">{exp.company}</h5>
+                <h4 className="career-card-role">{language === 'vi' ? exp.positionVi || exp.position : exp.position}</h4>
+                <h5 className="career-card-company">{language === 'vi' ? exp.companyVi || exp.company : exp.company}</h5>
                 
-                <p className="career-card-desc">{exp.description}</p>
+                <p className="career-card-desc">{language === 'vi' ? exp.descriptionVi || exp.description : exp.description}</p>
                 
                 {exp.responsibilities && exp.responsibilities.length > 0 && (
                   <ul className="career-responsibilities">
-                    {exp.responsibilities.map((resp, idx) => (
+                    {(language === 'vi' && exp.responsibilitiesVi ? exp.responsibilitiesVi : exp.responsibilities).map((resp, idx) => (
                       <li key={idx}>{resp}</li>
                     ))}
                   </ul>

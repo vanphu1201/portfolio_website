@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./styles/GithubStats.css";
+import { useTranslation } from "../hooks/useTranslation";
 
 interface GitHubData {
   followers: number;
@@ -8,6 +9,7 @@ interface GitHubData {
 }
 
 const GithubStats = () => {
+  const { t } = useTranslation();
   const [stats, setStats] = useState<GitHubData>({
     followers: 12,
     publicRepos: 18,
@@ -86,7 +88,7 @@ const GithubStats = () => {
   return (
     <div className="github-stats-section" id="github-contributions">
       <div className="github-container">
-        <h2 className="github-heading">Code & Contributions</h2>
+        <h2 className="github-heading">{t('github.title')}</h2>
         <div className="github-grid-layout">
           
           {/* Main Heatmap Card (Left, 70%) */}
@@ -98,7 +100,7 @@ const GithubStats = () => {
                 </div>
                 <div className="user-info">
                   <h4>@tranvanphu</h4>
-                  <p>Contribution activity on GitHub</p>
+                  <p>{t('github.contributionActivity')}</p>
                 </div>
               </div>
             </div>
@@ -127,23 +129,23 @@ const GithubStats = () => {
 
             <div className="heatmap-footer">
               <span className="total-contributions">
-                {loading ? "Calculating..." : "1,452 contributions in the last year"}
+                {loading ? t('github.calculating') : t('github.contributionsYear')}
               </span>
               <div className="legend">
-                <span>Less</span>
+                <span>{t('github.less')}</span>
                 <div className="heatmap-cell level-0" />
                 <div className="heatmap-cell level-1" />
                 <div className="heatmap-cell level-2" />
                 <div className="heatmap-cell level-3" />
                 <div className="heatmap-cell level-4" />
-                <span>More</span>
+                <span>{t('github.more')}</span>
               </div>
             </div>
 
             {/* Empty Space filler: Featured Repositories */}
             <div className="github-card-divider" />
             <div className="github-repos-section">
-              <h5 className="github-subheading">Featured Repositories</h5>
+              <h5 className="github-subheading">{t('github.featuredRepos')}</h5>
               <div className="github-repos-list">
                 <div className="github-repo-item">
                   <div className="repo-header">
@@ -153,7 +155,7 @@ const GithubStats = () => {
                     </a>
                     <span className="repo-badge">Public</span>
                   </div>
-                  <p className="repo-desc">Optical tracking system & auto-annotation pipelines for soccer match video analysis using computer vision and YOLOv8.</p>
+                  <p className="repo-desc">{t('github.repoDesc1')}</p>
                   <div className="repo-meta">
                     <span className="repo-lang"><span className="lang-dot python" /> Python</span>
                     <span className="repo-stars">⭐ 14</span>
@@ -169,7 +171,7 @@ const GithubStats = () => {
                     </a>
                     <span className="repo-badge">Public</span>
                   </div>
-                  <p className="repo-desc">Natural Language Processing (NLP) tools for analyzing Vietnamese rap lyrics, rhyme schemes, and thematic patterns.</p>
+                  <p className="repo-desc">{t('github.repoDesc2')}</p>
                   <div className="repo-meta">
                     <span className="repo-lang"><span className="lang-dot typescript" /> TypeScript</span>
                     <span className="repo-stars">⭐ 8</span>
@@ -186,19 +188,19 @@ const GithubStats = () => {
             <div className="github-card stat-card followers-card" data-cursor="disable">
               <div className="stat-icon-wrapper purple-glow">👥</div>
               <div className="stat-value">{stats.followers}</div>
-              <div className="stat-label">Followers</div>
+              <div className="stat-label">{t('github.followers')}</div>
             </div>
 
             <div className="github-card stat-card repos-card" data-cursor="disable">
               <div className="stat-icon-wrapper teal-glow">🗂️</div>
               <div className="stat-value">{stats.publicRepos}</div>
-              <div className="stat-label">Repositories</div>
+              <div className="stat-label">{t('github.repositories')}</div>
             </div>
 
             <div className="github-card stat-card stars-card" data-cursor="disable">
               <div className="stat-icon-wrapper gold-glow">⭐</div>
               <div className="stat-value">{stats.stars}</div>
-              <div className="stat-label">GitHub Stars</div>
+              <div className="stat-label">{t('github.githubStars')}</div>
             </div>
           </div>
 

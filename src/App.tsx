@@ -9,9 +9,11 @@ const MainContainer = lazy(() => import("./components/MainContainer"));
 const MyWorks = lazy(() => import("./pages/MyWorks"));
 const Play = lazy(() => import("./pages/Play"));
 import { LoadingProvider } from "./context/LoadingProvider";
+import { LanguageProvider } from "./context/LanguageProvider";
 
 const App = () => {
   return (
+    <LanguageProvider>
     <BrowserRouter>
       <Routes>
         <Route
@@ -48,6 +50,7 @@ const App = () => {
       <Analytics />
       <SpeedInsights />
     </BrowserRouter>
+    </LanguageProvider>
   );
 };
 

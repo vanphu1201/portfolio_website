@@ -2,8 +2,10 @@ import { useEffect, useRef } from "react";
 import "./styles/WhatIDo.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { config } from "../config";
+import { useTranslation } from "../hooks/useTranslation";
 
 const WhatIDo = () => {
+  const { t, language } = useTranslation();
   const containerRef = useRef<(HTMLDivElement | null)[]>([]);
   const setRef = (el: HTMLDivElement | null, index: number) => {
     containerRef.current[index] = el;
@@ -29,9 +31,9 @@ const WhatIDo = () => {
     <div className="whatIDO">
       <div className="what-box">
         <h2 className="title">
-          W<span className="hat-h2">HAT</span>
+          {t('whatido.title_w')}<span className="hat-h2">{t('whatido.title_hat')}</span>
           <div>
-            &nbsp;I<span className="do-h2"> DO</span>
+            &nbsp;{t('whatido.title_i')}<span className="do-h2"> {t('whatido.title_do')}</span>
           </div>
         </h2>
       </div>
@@ -89,11 +91,11 @@ const WhatIDo = () => {
 
             <div className="what-content-in">
               <h3>{config.skills.develop.title}</h3>
-              <h4>{config.skills.develop.description}</h4>
+              <h4>{language === 'vi' ? config.skills.develop.descriptionVi || config.skills.develop.description : config.skills.develop.description}</h4>
               <p>
-                {config.skills.develop.details}
+                {language === 'vi' ? config.skills.develop.detailsVi || config.skills.develop.details : config.skills.develop.details}
               </p>
-              <h5>Skillset & tools</h5>
+              <h5>{t('whatido.skillset')}</h5>
               <div className="what-content-flex">
                 {config.skills.develop.tools.map((tool, index) => (
                   <div key={index} className="what-tags">{tool}</div>
@@ -122,11 +124,11 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
             <div className="what-content-in">
               <h3>{config.skills.design.title}</h3>
-              <h4>{config.skills.design.description}</h4>
+              <h4>{language === 'vi' ? config.skills.design.descriptionVi || config.skills.design.description : config.skills.design.description}</h4>
               <p>
-                {config.skills.design.details}
+                {language === 'vi' ? config.skills.design.detailsVi || config.skills.design.details : config.skills.design.details}
               </p>
-              <h5>Skillset & tools</h5>
+              <h5>{t('whatido.skillset')}</h5>
               <div className="what-content-flex">
                 {config.skills.design.tools.map((tool, index) => (
                   <div key={index} className="what-tags">{tool}</div>

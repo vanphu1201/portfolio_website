@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./styles/TechStackNew.css";
+import { useTranslation } from "../hooks/useTranslation";
 
 interface TechItem {
   name: string;
@@ -73,6 +74,7 @@ const techStack: TechItem[][] = [
 ];
 
 const TechStackNew = () => {
+  const { t } = useTranslation();
   const [activeSkill, setActiveSkill] = useState<TechItem | null>(null);
 
   return (
@@ -88,7 +90,7 @@ const TechStackNew = () => {
 
       {/* Content */}
       <div className="techstack-content">
-        <h2>Tech <span>Stack</span></h2>
+        <h2>{t('techstack.titleTech')} <span>{t('techstack.titleStack')}</span></h2>
         
         {/* Inverted Pyramid */}
         <div className="techstack-pyramid">
@@ -137,15 +139,15 @@ const TechStackNew = () => {
                     <div className="hud-meter-bar" style={{ width: `${activeSkill.level}%` }} />
                   </div>
                   <div className="hud-meta">
-                    <span>STATUS: ACTIVE</span>
-                    <span>PROFICIENCY: {activeSkill.level}%</span>
+                    <span>{t('techstack.statusActive')}</span>
+                    <span>{t('techstack.proficiency')}: {activeSkill.level}%</span>
                   </div>
                 </div>
               </div>
             ) : (
               <div className="hud-placeholder">
                 <div className="scanner-line-loop" />
-                <p>SYSTEM SCANNING: HOVER OVER A TECH NODE TO ANALYZE SKILL METRICS...</p>
+                <p>{t('techstack.scanPlaceholder')}</p>
               </div>
             )}
           </div>
