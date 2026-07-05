@@ -6,7 +6,7 @@ export const config = {
         description: "Software Engineer & AI Architect building intelligent systems and high-performance web applications. Passionate about computer vision, machine learning, and crafting seamless digital experiences."
     },
     social: {
-        github: "tranvanphu",
+        github: "vanphu1201",
         email: "contact@tranvanphu.dev",
         location: "Ho Chi Minh City, Vietnam"
     },
@@ -115,35 +115,49 @@ export const config = {
     projects: [
         {
             id: 1,
+            title: "GDrive Ultra",
+            category: "Web Application",
+            technologies: "Next.js, TypeScript, Tailwind CSS, API Integration",
+            image: "/images/gdrive_ultra.png",
+            description: "Download locked Google Drive videos and documents securely and fast. Bypass print/download restrictions on Google Drive files easily.",
+            descriptionVi: "Tải xuống các video và tài liệu Google Drive bị khóa/hạn chế một cách an toàn và nhanh chóng. Vượt qua giới hạn in/tải xuống trên các tệp Google Drive dễ dàng.",
+            githubLink: "https://github.com/vanphu1201/coppy-and-dowload-prive-drive",
+            liveLink: "https://though-definitely-seem-log.trycloudflare.com/"
+        },
+        {
+            id: 2,
             title: "Tap Hoa 5.0EZ",
             category: "Web & Matching",
             technologies: "Next.js, TypeScript, Tailwind CSS, Supabase, Framer Motion",
             image: "/images/project1.png",
             description: "A digital platform modernizing traditional grocery stores — connecting suppliers and shop owners through smart matching algorithms. Features real-time order management dashboard and inventory tracking.",
-            descriptionVi: "Nền tảng số hóa cửa hàng tạp hóa truyền thống — kết nối nhà cung cấp và chủ cửa hàng thông qua thuật toán matching thông minh. Tính năng dashboard quản lý đơn hàng thời gian thực và theo dõi tồn kho."
+            descriptionVi: "Nền tảng số hóa cửa hàng tạp hóa truyền thống — kết nối nhà cung cấp và chủ cửa hàng thông qua thuật toán matching thông minh. Tính năng dashboard quản lý đơn hàng thời gian thực và theo dõi tồn kho.",
+            githubLink: "https://github.com/vanphu1201"
         },
         {
-            id: 2,
+            id: 3,
             title: "AI Football Tracking",
             category: "Computer Vision",
             technologies: "Python, YOLOv8, OpenCV, FastAPI, React",
             image: "/images/project2.png",
             description: "Real-time football video analysis system powered by YOLOv8. Detects and tracks players and the ball, automatically exporting coordinate JSON data for tactical analysis.",
-            descriptionVi: "Hệ thống phân tích video bóng đá thời gian thực sử dụng YOLOv8. Phát hiện và theo dõi cầu thủ và bóng, tự động xuất dữ liệu tọa độ JSON cho phân tích chiến thuật."
+            descriptionVi: "Hệ thống phân tích video bóng đá thời gian thực sử dụng YOLOv8. Phát hiện và theo dõi cầu thủ và bóng, tự động xuất dữ liệu tọa độ JSON cho phân tích chiến thuật.",
+            githubLink: "https://github.com/vanphu1201/football-annotation-cv"
         },
         {
-            id: 3,
+            id: 4,
             title: "Hand Gesture Recognition",
             category: "AI / CV",
             technologies: "Python, MediaPipe, TensorFlow, OpenCV, Scikit-learn",
             image: "/images/project3.png",
             description: "Real-time hand gesture recognition using MediaPipe Hands and a custom classification model. Enables touchless device control and interaction for accessibility and automation use cases.",
-            descriptionVi: "Nhận dạng cử chỉ tay thời gian thực sử dụng MediaPipe Hands và mô hình phân loại tùy chỉnh. Cho phép điều khiển thiết bị không chạm cho các trường hợp sử dụng về khả năng truy cập và tự động hóa."
+            descriptionVi: "Nhận dạng cử chỉ tay thời gian thực sử dụng MediaPipe Hands và mô hình phân loại tùy chỉnh. Cho phép điều khiển thiết bị không chạm cho các trường hợp sử dụng về khả năng truy cập và tự động hóa.",
+            githubLink: "https://github.com/vanphu1201/hand-gesture-recognition"
         }
     ],
     contact: {
         email: "contact@tranvanphu.dev",
-        github: "https://github.com/tranvanphu",
+        github: "https://github.com/vanphu1201",
         linkedin: "https://linkedin.com/in/tranvanphu",
         twitter: "https://x.com/tranvanphu",
         facebook: "https://www.facebook.com/tranvanphu",

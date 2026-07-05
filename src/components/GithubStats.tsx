@@ -21,11 +21,11 @@ const GithubStats = () => {
   useEffect(() => {
     const fetchGitHubData = async () => {
       try {
-        const userRes = await fetch("https://api.github.com/users/tranvanphu");
+        const userRes = await fetch("https://api.github.com/users/vanphu1201");
         if (!userRes.ok) throw new Error("Failed to fetch user");
         const userData = await userRes.json();
 
-        const reposRes = await fetch("https://api.github.com/users/tranvanphu/repos?per_page=100");
+        const reposRes = await fetch("https://api.github.com/users/vanphu1201/repos?per_page=100");
         let starsCount = 8; // fallback default
         if (reposRes.ok) {
           const reposData = await reposRes.json();
@@ -99,7 +99,7 @@ const GithubStats = () => {
                   <span className="github-logo-icon">🐙</span>
                 </div>
                 <div className="user-info">
-                  <h4>@tranvanphu</h4>
+                  <h4>@vanphu1201</h4>
                   <p>{t('github.contributionActivity')}</p>
                 </div>
               </div>
@@ -150,7 +150,23 @@ const GithubStats = () => {
                 <div className="github-repo-item">
                   <div className="repo-header">
                     <span className="repo-icon">📂</span>
-                    <a href="https://github.com/tranvanphu/football-annotation-cv" target="_blank" rel="noreferrer" className="repo-name">
+                    <a href="https://github.com/vanphu1201/coppy-and-dowload-prive-drive" target="_blank" rel="noreferrer" className="repo-name">
+                      coppy-and-dowload-prive-drive
+                    </a>
+                    <span className="repo-badge">Public</span>
+                  </div>
+                  <p className="repo-desc">{t('github.repoDesc3')}</p>
+                  <div className="repo-meta">
+                    <span className="repo-lang"><span className="lang-dot typescript" /> TypeScript</span>
+                    <span className="repo-stars">⭐ 12</span>
+                    <span className="repo-forks">🍴 2</span>
+                  </div>
+                </div>
+
+                <div className="github-repo-item">
+                  <div className="repo-header">
+                    <span className="repo-icon">📂</span>
+                    <a href="https://github.com/vanphu1201/football-annotation-cv" target="_blank" rel="noreferrer" className="repo-name">
                       football-annotation-cv
                     </a>
                     <span className="repo-badge">Public</span>
@@ -160,22 +176,6 @@ const GithubStats = () => {
                     <span className="repo-lang"><span className="lang-dot python" /> Python</span>
                     <span className="repo-stars">⭐ 14</span>
                     <span className="repo-forks">🍴 3</span>
-                  </div>
-                </div>
-
-                <div className="github-repo-item">
-                  <div className="repo-header">
-                    <span className="repo-icon">📂</span>
-                    <a href="https://github.com/tranvanphu/vietnamese-rap-analyzer" target="_blank" rel="noreferrer" className="repo-name">
-                      vietnamese-rap-analyzer
-                    </a>
-                    <span className="repo-badge">Public</span>
-                  </div>
-                  <p className="repo-desc">{t('github.repoDesc2')}</p>
-                  <div className="repo-meta">
-                    <span className="repo-lang"><span className="lang-dot typescript" /> TypeScript</span>
-                    <span className="repo-stars">⭐ 8</span>
-                    <span className="repo-forks">🍴 1</span>
                   </div>
                 </div>
               </div>

@@ -188,6 +188,35 @@
   box-shadow: 0 8px 20px rgba(194, 164, 255, 0.35);
 }
 
+.project-links-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.project-live-btn-new {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(194, 164, 255, 0.4);
+  border-radius: 8px;
+  text-decoration: none;
+  width: fit-content;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-live-btn-new:hover {
+  background: rgba(194, 164, 255, 0.1);
+  border-color: #c2a4ff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(194, 164, 255, 0.15);
+}
+
 /* Right Side: Media */
 .work-media-new {
   width: 50%;

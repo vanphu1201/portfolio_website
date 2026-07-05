@@ -9,11 +9,7 @@ import { useTranslation } from "../hooks/useTranslation";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const repoLinks = [
-  "https://github.com/tranvanphu",
-  "https://github.com/tranvanphu/football-annotation-cv",
-  "https://github.com/tranvanphu/hand-gesture-recognition"
-];
+
 
 const Work = () => {
   const { t, language } = useTranslation();
@@ -76,7 +72,7 @@ const Work = () => {
         </h2>
         <div className="work-flex">
           {config.projects.slice(0, 5).map((project, index) => {
-            const projectLink = repoLinks[index] || "https://github.com/tranvanphu";
+            const projectLink = project.liveLink || project.githubLink || "https://github.com/vanphu1201";
             const techList = project.technologies.split(", ");
             
             return (
@@ -102,15 +98,30 @@ const Work = () => {
                     </div>
                   </div>
                   
-                  <a 
-                    href={projectLink} 
-                    target="_blank" 
-                    rel="noreferrer" 
-                    className="project-github-btn-new"
-                    data-cursor="disable"
-                  >
-                    {t('work.viewCode')}
-                  </a>
+                  <div className="project-links-row">
+                    {project.githubLink && (
+                      <a 
+                        href={project.githubLink} 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        className="project-github-btn-new"
+                        data-cursor="disable"
+                      >
+                        {t('work.viewCode')}
+                      </a>
+                    )}
+                    {project.liveLink && (
+                      <a 
+                        href={project.liveLink} 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        className="project-live-btn-new"
+                        data-cursor="disable"
+                      >
+                        {t('work.viewLive')}
+                      </a>
+                    )}
+                  </div>
                 </div>
 
                 {/* Right Side: Showcase Media */}

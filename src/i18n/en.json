@@ -51,6 +51,7 @@
     "titleWork": "Work",
     "techStack": "Tech Stack",
     "viewCode": "View Codebase →",
+    "viewLive": "Live Demo →",
     "seeMoreTitle": "Want to see more?",
     "seeMoreDesc": "Explore all of my projects and creations",
     "seeAllBtn": "See All Works →"
@@ -75,7 +76,8 @@
     "repositories": "Repositories",
     "githubStars": "GitHub Stars",
     "repoDesc1": "Optical tracking system & auto-annotation pipelines for soccer match video analysis using computer vision and YOLOv8.",
-    "repoDesc2": "Natural Language Processing (NLP) tools for analyzing Vietnamese rap lyrics, rhyme schemes, and thematic patterns."
+    "repoDesc2": "Natural Language Processing (NLP) tools for analyzing Vietnamese rap lyrics, rhyme schemes, and thematic patterns.",
+    "repoDesc3": "A restricted downloader application to bypass print and download limitations for private Google Drive documents and videos."
   },
   "cta": {
     "playWithMe": "Play With Me →",

@@ -123,7 +123,7 @@ const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose }) => {
       icon: "💻",
       action: () => {
         onClose();
-        window.open("https://github.com/tranvanphu", "_blank");
+        window.open("https://github.com/vanphu1201", "_blank");
       },
     },
     {

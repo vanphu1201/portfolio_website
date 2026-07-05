@@ -51,6 +51,7 @@
     "titleWork": "Án",
     "techStack": "Công nghệ",
     "viewCode": "Xem mã nguồn →",
+    "viewLive": "Xem trực tiếp →",
     "seeMoreTitle": "Muốn xem thêm?",
     "seeMoreDesc": "Khám phá tất cả dự án và sản phẩm của tôi",
     "seeAllBtn": "Xem tất cả →"
@@ -75,7 +76,8 @@
     "repositories": "Kho lưu trữ",
     "githubStars": "Sao GitHub",
     "repoDesc1": "Hệ thống theo dõi quang học & pipeline chú thích tự động cho phân tích video bóng đá sử dụng thị giác máy tính và YOLOv8.",
-    "repoDesc2": "Công cụ Xử lý Ngôn ngữ Tự nhiên (NLP) để phân tích lời rap Việt Nam, sơ đồ vần và chủ đề."
+    "repoDesc2": "Công cụ Xử lý Ngôn ngữ Tự nhiên (NLP) để phân tích lời rap Việt Nam, sơ đồ vần và chủ đề.",
+    "repoDesc3": "Ứng dụng tải xuống bị hạn chế, vượt qua giới hạn in và tải xuống đối với tài liệu và video Google Drive riêng tư."
   },
   "cta": {
     "playWithMe": "Chơi cùng tôi →",
