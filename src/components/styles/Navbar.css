@@ -61,7 +61,7 @@
     font-size: 16px;
   }
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1400px) {
   .navbar-connect {
     display: block;
   }
@@ -71,7 +71,7 @@
     padding: 35px 0px;
   }
   .header ul {
-    column-gap: 80px;
+    column-gap: 40px;
     font-size: 16px;
   }
   .navbar-connect {
